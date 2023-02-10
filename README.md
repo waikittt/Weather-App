@@ -1,5 +1,6 @@
 # Weather-App-Project
-Using vanilla JavaScript &amp; weather API from Open-Meteo.
+A web app that shows the weather based on user's current location. Built using vanilla JavaScript & weather API from Open-Meteo.
 
-This weather app is created based on the tutorial from the YouTube video by 
-developedbyed (https://www.youtube.com/watch?v=wPElVpR1rwA).
+This app is created based on a tutorial in the YouTube video by developedbyed (https://www.youtube.com/watchv=wPElVpR1rwA).
+
+
