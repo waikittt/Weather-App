@@ -22,6 +22,10 @@ body {
     justify-content: space-around;
     align-items: center;
 }
+.location-area, .location-country{
+    border: 2px outset rgb(200, 252, 163);
+    padding: 15px;
+}
 .temperature {
     flex-direction: column;
 }
