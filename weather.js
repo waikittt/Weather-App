@@ -1,4 +1,8 @@
 window.addEventListener('load', () => {
+    // play music
+    document.getElementById("myAudio").volume = 0.2; 
+    document.getElementById("myAudio").play(); 
+
     let long, lat;
     let tempDesc = document.querySelector('.temperature-description');
     let tempDegree = document.querySelector('.temperature-degree');
