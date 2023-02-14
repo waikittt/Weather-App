@@ -24,29 +24,34 @@ window.addEventListener('load', () => {
                 .then(data => {
                     console.log(data)
                     const temperature = data.main.temp;
+                    const description = data.weather[0]["description"];
 
-                    // // set DOM elements based on API
+                    // set DOM elements based on API
                     tempDegree.textContent = temperature;
-                    tempDesc.textContent = data.weather[0]["description"]; //weatherDescription[weathercode];
+                    tempDesc.textContent =  description;
                     locArea.textContent = data.name;
                     locCountry.textContent = data.sys.country;
 
-                    //set the icon
+                    // set the weather icon
                     const iconID = data.weather[0]["icon"]
                     icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${iconID}@2x.png"/>`   
                     
-                    // change temperature to Celsius/Fahrenheit 
+                    // listen to the click event on the temperature element
                     tempSection.addEventListener('click', () => {
                         convertTemp(temperature);
                     });
-                });
+
+                    // change background
+                    setBackground(description);
+                });   
         }); 
     }   
     else {
         h1.textContent = "This is not working :D"
     }
 
-    function convertTemp (temp) {
+    // change temperature to Celsius/Fahrenheit 
+    function convertTemp(temp) {
         if (tempSpan.textContent === "°C") {
             tempSpan.textContent = "F";
             let fahrenheit = (temp * 9/5) + 32;
@@ -55,6 +60,23 @@ window.addEventListener('load', () => {
         else {
             tempSpan.textContent = "°C";
             tempDegree.textContent = temp;
+        }
+    }
+    // set background of the webpage
+    function setBackground(weather) {
+        document.body.style.backgroundSize = "cover"; //cover the whole page 
+
+        if (weather.includes("clouds")) {
+            document.body.style.backgroundImage = `url("https://media.istockphoto.com/photos/blue-sky-and-white-clouds- picture-id1178574687?b=1&k=20&m=1178574687&s=612x612&w=0&h=q25_Nl3XXcb9DJfrXCLMSatu_v-JckhHh0fURRDiI5o=")`;     
+        }
+        else if (weather.includes("thunder")) {
+            document.body.style.backgroundImage = `url("https://www.scotsman.com/webimg/b25lY21zOjI0YWViZTc3LWJiZDQtNGM4Ny05NzIwLTYxNmZkODMyZDM0YToxNTAyMzNmMi1lZmJjLTRhNjEtOTY3NS0wNTdmMzNlY2VjZGY=.jpg?width=1200&enable=upscale")`;     
+        }
+        else if (weather.includes("clear")) {
+            document.body.style.backgroundImage = `url("https://img.freepik.com/free-photo/white-cloud-blue-sky_74190-7728.jpg")`;     
+        }
+        else if (weather.includes("rain") || weather.includes("drizzle")) {
+            document.body.style.backgroundImage = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
         }
     }
 });
