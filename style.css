@@ -24,7 +24,12 @@ body {
 }
 .location-area, .location-country{
     border: 2px outset rgb(200, 252, 163);
+    background-color: grey;
     padding: 15px;
+}
+#weather-icon {
+    border: 2px outset rgb(200, 252, 163);
+    background-color: rgb(93, 128, 122);
 }
 .temperature {
     flex-direction: column;
