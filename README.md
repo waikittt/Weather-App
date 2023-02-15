@@ -2,7 +2,7 @@
 A web app that shows the weather based on user's current location or a specific location pinpointed on the map. Built using vanilla JavaScript with the help of ChatGPT. 
 
 ## **Steps**
-In order to use this app, you will have to obtain your own API key by registrating an account on [OpenWeatherMap](https://openweathermap.org/). The API key will be available for use within a few hours after registration. There are 2 alternatives on how to use your API key.
+In order to use this app, you will have to obtain your own API key by registrating an account on [OpenWeatherMap](https://openweathermap.org/). The API key will be available for use within a few hours after registration. The API key is needed to authenticate and authorize access to the API used in this application. There are 2 alternatives on how to use your API key.
 
 ### ~ Method A  (Cloning this repository)
 1. Clone this repository into your local repository.
