@@ -4,18 +4,6 @@ window.addEventListener('load', () => {
     // lower the volume of music
     document.getElementById("myAudio").volume = 0.2; 
 
-    // Leaflet interactive map
-    var map = L.map('map').setView([51.505, -0.09], 13);
-    
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    var marker = L.marker([51.5, -0.09]).addTo(map);
-
-
-
     let long, lat;
     let tempDesc = document.querySelector('.temperature-description');
     let tempDegree = document.querySelector('.temperature-degree');
@@ -29,8 +17,9 @@ window.addEventListener('load', () => {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
+            interactMap(lat, long);  // create the map
 
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`;
 
             // `fetch` to make an HTTP GET request to the API endpoint
             // `then` called on the returned promise, resolves with the response from the API
@@ -62,7 +51,7 @@ window.addEventListener('load', () => {
         }); 
     }   
     else {
-        h1.textContent = "This is not working :D"
+        h1.textContent = "Your location cannot be found..."
     }
 
     // change temperature to Celsius/Fahrenheit 
@@ -76,25 +65,40 @@ window.addEventListener('load', () => {
             tempSpan.textContent = "°C";
             tempDegree.textContent = temp;
         }
-    }
-    // set background of the webpage
-    function setBackground(weather) {
-        document.body.style.backgroundSize = "cover"; //cover the whole page 
-
-        if (weather.includes("clouds")) {
-            document.body.style.backgroundImage = `url("https://media.istockphoto.com/photos/blue-sky-and-white-clouds- picture-id1178574687?b=1&k=20&m=1178574687&s=612x612&w=0&h=q25_Nl3XXcb9DJfrXCLMSatu_v-JckhHh0fURRDiI5o=")`;     
-        }
-        else if (weather.includes("thunder")) {
-            document.body.style.backgroundImage = `url("https://www.scotsman.com/webimg/b25lY21zOjI0YWViZTc3LWJiZDQtNGM4Ny05NzIwLTYxNmZkODMyZDM0YToxNTAyMzNmMi1lZmJjLTRhNjEtOTY3NS0wNTdmMzNlY2VjZGY=.jpg?width=1200&enable=upscale")`;     
-        }
-        else if (weather.includes("clear")) {
-            document.body.style.backgroundImage = `url("https://img.freepik.com/free-photo/white-cloud-blue-sky_74190-7728.jpg")`;     
-        }
-        else if (weather.includes("rain") || weather.includes("drizzle")) {
-            document.body.style.backgroundImage = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
-        }
-    }
+    } 
 });
+
+// set background of the webpage
+function setBackground(weather) {
+    document.body.style.backgroundSize = "cover"; //cover the whole page 
+
+    if (weather.includes("clouds")) {
+        document.body.style.backgroundImage = `url("https://media.istockphoto.com/photos/blue-sky-and-white-clouds- picture-id1178574687?b=1&k=20&m=1178574687&s=612x612&w=0&h=q25_Nl3XXcb9DJfrXCLMSatu_v-JckhHh0fURRDiI5o=")`;     
+    }
+    else if (weather.includes("thunder")) {
+        document.body.style.backgroundImage = `url("https://www.scotsman.com/webimg/b25lY21zOjI0YWViZTc3LWJiZDQtNGM4Ny05NzIwLTYxNmZkODMyZDM0YToxNTAyMzNmMi1lZmJjLTRhNjEtOTY3NS0wNTdmMzNlY2VjZGY=.jpg?width=1200&enable=upscale")`;     
+    }
+    else if (weather.includes("clear")) {
+        document.body.style.backgroundImage = `url("https://img.freepik.com/free-photo/white-cloud-blue-sky_74190-7728.jpg")`;     
+    }
+    else if (weather.includes("rain") || weather.includes("drizzle")) {
+        document.body.style.backgroundImage = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
+    }
+}
+// implement the Leaflet interactive map 
+function interactMap(latitude, longitude) {
+    // initialize, set its view to chosen geographical coordinates and a zoom level
+    var map = L.map('map').setView([latitude, longitude], 13);
+
+    // add a OpenStreetMap tile layer
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker = L.marker([latitude, longitude]).addTo(map);             // add marker to the map
+    marker.bindPopup("How's the weather here?").openPopup();   // shows a popup when the marker is clicked
+}
 
 
 
