@@ -23,12 +23,14 @@ body {
 }
 .location-area, .location-country{
     border: 2px outset none;
+    border-radius: 10%;
     background-color: grey;
     padding: 15px;
 }
 #weather-icon {
     border: 2px outset none;
-    background-color: rgb(50, 101, 93);
+    border-radius: 10%;
+    background-color: rgb(80, 131, 125);
 }
 .temperature {
     flex-direction: column;
@@ -51,10 +53,10 @@ body {
 }
 #map {
     position: absolute;
-    left: 20px;
-    bottom: 20px;
-    height: 250px;
-    width: 350px;
+    left: 25px;
+    bottom: 25px;
+    height: 40vh;
+    width: 25vw;
     border: 2px dotted black;
 }
 

@@ -1,3 +1,5 @@
+import { API_KEY } from '/env.js'
+
 window.addEventListener('load', () => {
     // lower the volume of music
     document.getElementById("myAudio").volume = 0.2; 
@@ -28,9 +30,7 @@ window.addEventListener('load', () => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
 
-            //const api = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m&current_weather=true&timezone=Asia%2FSingapore`;
-            const apiKey = "1c337f3844b547c4863a294452962d58"
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`
 
             // `fetch` to make an HTTP GET request to the API endpoint
             // `then` called on the returned promise, resolves with the response from the API
