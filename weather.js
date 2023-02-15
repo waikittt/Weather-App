@@ -17,9 +17,15 @@ window.addEventListener('load', () => {
         navigator.geolocation.getCurrentPosition(position => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
+            
+            useApi(lat, long); 
             interactMap(lat, long);  // create the map
+        }); 
+    }   
 
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`;
+    // use the weather API and update HTML elements
+    function useApi(lat, long) {
+        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`;
 
             // `fetch` to make an HTTP GET request to the API endpoint
             // `then` called on the returned promise, resolves with the response from the API
@@ -47,11 +53,36 @@ window.addEventListener('load', () => {
                     });
                     // change background
                     setBackground(description);
-                });   
-        }); 
-    }   
-    else {
-        h1.textContent = "Your location cannot be found..."
+                }); 
+    }
+
+    // implement the Leaflet interactive map 
+    function interactMap(latitude, longitude) {
+        // initialize, set its view to user's current geographical coordinates and a zoom level
+        var map = L.map('map').setView([latitude, longitude], 13);
+
+        // add a OpenStreetMap tile layer
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var marker = L.marker([latitude, longitude]).addTo(map);   // add marker to the map
+        marker.bindPopup("How's the weather here?").openPopup();   // shows a popup when the marker is clicked
+
+        // deal with click events on the map
+        function onMapClick(event) {
+            marker.setLatLng(event.latlng); // change position of marker
+
+            let popup = L.popup();      // create a popup whenever user clicks on a new location
+            popup
+                .setLatLng(event.latlng)
+                .setContent("Location changed" )
+                .openOn(map);
+            
+            useApi(event.latlng.lat, event.latlng.lng);  // fetch from the API whenever the map is clicked
+        }
+        map.on('click', onMapClick);
     }
 
     // change temperature to Celsius/Fahrenheit 
@@ -85,20 +116,9 @@ function setBackground(weather) {
         document.body.style.backgroundImage = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
     }
 }
-// implement the Leaflet interactive map 
-function interactMap(latitude, longitude) {
-    // initialize, set its view to chosen geographical coordinates and a zoom level
-    var map = L.map('map').setView([latitude, longitude], 13);
 
-    // add a OpenStreetMap tile layer
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
 
-    var marker = L.marker([latitude, longitude]).addTo(map);             // add marker to the map
-    marker.bindPopup("How's the weather here?").openPopup();   // shows a popup when the marker is clicked
-}
+
 
 
 
