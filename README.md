@@ -13,7 +13,7 @@ A web app that shows the weather based on user's current location or a specific 
 ### Credits
 This project was built by utilizing the following resources:
 
-- Tutorial video by developedbyed [Build A Weather App With Vanilla Javascript Tutorial](https://www.youtube.com/watch?v=wPElVpR1rwA)
+- Tutorial video by developedbyed ([Build A Weather App With Vanilla Javascript Tutorial](https://www.youtube.com/watch?v=wPElVpR1rwA)).
 - Weather API and icons from OpenWeatherMap.
 - Interactive map from the Leaflet library.
 - Music by [SoundsForYou](https://pixabay.com/users/soundsforyou-4861230/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=114484) from [Pixabay](https://pixabay.com/music//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=114484).
