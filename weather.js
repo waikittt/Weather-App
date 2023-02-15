@@ -118,18 +118,20 @@ window.addEventListener('load', () => {
 // set background of the webpage
 function setBackground(weather) {
     document.body.style.backgroundSize = "cover"; //cover the whole page 
+    let bgUrl; 
 
     if (weather.includes("clouds")) {
-        document.body.style.backgroundImage = `url("https://media.istockphoto.com/photos/blue-sky-and-white-clouds- picture-id1178574687?b=1&k=20&m=1178574687&s=612x612&w=0&h=q25_Nl3XXcb9DJfrXCLMSatu_v-JckhHh0fURRDiI5o=")`;     
+        bgUrl = `url("https://media.istockphoto.com/photos/blue-sky-and-white-clouds- picture-id1178574687?b=1&k=20&m=1178574687&s=612x612&w=0&h=q25_Nl3XXcb9DJfrXCLMSatu_v-JckhHh0fURRDiI5o=")`;     
     }
     else if (weather.includes("thunder")) {
-        document.body.style.backgroundImage = `url("https://www.scotsman.com/webimg/b25lY21zOjI0YWViZTc3LWJiZDQtNGM4Ny05NzIwLTYxNmZkODMyZDM0YToxNTAyMzNmMi1lZmJjLTRhNjEtOTY3NS0wNTdmMzNlY2VjZGY=.jpg?width=1200&enable=upscale")`;     
+        bgUrl = `url("https://www.scotsman.com/webimg/b25lY21zOjI0YWViZTc3LWJiZDQtNGM4Ny05NzIwLTYxNmZkODMyZDM0YToxNTAyMzNmMi1lZmJjLTRhNjEtOTY3NS0wNTdmMzNlY2VjZGY=.jpg?width=1200&enable=upscale")`;     
     }
     else if (weather.includes("clear")) {
-        document.body.style.backgroundImage = `url("https://img.freepik.com/free-photo/white-cloud-blue-sky_74190-7728.jpg")`;     
+        bgUrl = `url("https://img.freepik.com/free-photo/white-cloud-blue-sky_74190-7728.jpg")`;     
     }
     else if (weather.includes("rain") || weather.includes("drizzle")) {
-        document.body.style.backgroundImage = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
+        bgUrl = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
     }
+    document.body.style.backgroundImage = bgUrl;
 }
 
