@@ -11,6 +11,7 @@ In order to use this app, you will have to obtain your own API key by registrati
     - comment out the code `retrieveApi();` on line 26.
 3. Replace the `${API_KEY}` for the API reference link with your own API key in the useApi() function on line 44 of weather.js file. For example:
     - `const api = https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=1c456f1234b547c9999a294452546d10&units=metric;`
+4. Open the index.html file in your browser. 
 
 ### ~ Method B  (Use the published website)
 1. The website is hosted here [WeatherApp](https://waikittt.github.io/Weather-App/). Click on the link and open the website.
