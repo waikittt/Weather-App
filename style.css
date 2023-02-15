@@ -51,6 +51,10 @@ body {
 .degree-section h2 {
     font-size: 40px;
 }
+#myAudio {
+    width: 20vw;
+    height: 6vh;
+}
 #map {
     position: absolute;
     left: 25px;
@@ -58,5 +62,18 @@ body {
     height: 32vh;
     width: 25vw;
     border: 2px dotted black;
+}
+#apiForm {
+    padding-top: 5px;
+    padding-left: 5px;
+    position: absolute;
+    right: 35px;
+    bottom: 30px;
+    height: 8vh;
+    width: 14vw;
+    color: rgb(7, 24, 16);
+    background-color: rgb(225, 210, 95);    
+    font-family: cursive;
+    border-radius: 10px;
 }
 

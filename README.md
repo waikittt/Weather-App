@@ -1,18 +1,29 @@
-# Weather App
+# **Weather App**
 A web app that shows the weather based on user's current location or a specific location pinpointed on the map. Built using vanilla JavaScript with the help of ChatGPT. 
 
-### Steps
-1. In order to use this app, you will have to obtain your own API key by registrating on [OpenWeatherMap](https://openweathermap.org/).
-2. The API key will be available for use within a few hours after registration. 
-3. Delete the `import { API_KEY } from '/env.js'` statement in the weather.js file.
-4. Replace the `${API_KEY}` for the API reference link with your own API key in the useApi() function of weather.js file. For example:
-    - `const api = https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=1c456f1234b547c9999a294452546d10&units=metric;`
-5. The webpage will look like this ⬇ ⬇ ⬇ <br/><br/>
-![image](./assets/page_example.jpg)
-- - -
-- **NOTE**: Please refresh the page if the weather cannot be retrieved from a certain location and try selecting that location again :)
+## **Steps**
+In order to use this app, you will have to obtain your own API key by registrating an account on [OpenWeatherMap](https://openweathermap.org/). The API key will be available for use within a few hours after registration. There are 2 alternatives on how to use your API key.
 
-### Credits
+### ~ Method A  (Cloning this repository)
+1. Clone this repository into your local repository.
+2. In the weather.js file,
+    - uncomment the code `useApi(lat, long);` on line 23 & 
+    - comment out the code `retrieveApi();` on line 26.
+3. Replace the `${API_KEY}` for the API reference link with your own API key in the useApi() function on line 44 of weather.js file. For example:
+    - `const api = https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=1c456f1234b547c9999a294452546d10&units=metric;`
+
+### ~ Method B  (Use the published website)
+1. The website is hosted here [WeatherApp](https://waikittt.github.io/Weather-App/). Click on the link and open the website.
+2. Submit your API key using the input field at the bottom right corner.
+<br/><br/>
+
+- - - 
+- **NOTE**: Please refresh the page if the weather cannot be retrieved from a certain location and try selecting that location again :) <br/><br/>
+- The webpage will look like this ⬇ ⬇ <br/><br/>
+![image](./assets/page_example.jpg)
+
+
+## **Credits**
 This project was built by utilizing the following resources:
 
 - Tutorial video by developedbyed ([Build A Weather App With Vanilla Javascript Tutorial](https://www.youtube.com/watch?v=wPElVpR1rwA)).

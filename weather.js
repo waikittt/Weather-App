@@ -1,7 +1,5 @@
-import { API_KEY } from '/env.js'
-
 window.addEventListener('load', () => {
-    // lower the volume of music
+    // lower the default volume of music
     document.getElementById("myAudio").volume = 0.2; 
 
     let long, lat;
@@ -12,20 +10,38 @@ window.addEventListener('load', () => {
     let icon = document.getElementById('weather-icon')
     let tempSection = document.querySelector('.degree-section')
     let tempSpan = document.querySelector('.degree-section span')
-    
+    let apiKey = null;
+
+    // check if user's geolocation data can be accessed
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-            long = position.coords.longitude;
             lat = position.coords.latitude;
-            
-            useApi(lat, long); 
+            long = position.coords.longitude;
             interactMap(lat, long);  // create the map
-        }); 
-    }   
 
+            // Uncomment the line below to use Method A (see README)
+            // useApi(lat, long);
+
+            // Uncomment the line below to use Method B (see README)
+            retrieveApi();
+        }); 
+    } 
+
+    // retrieve the API key submitted by user to use the API
+    function retrieveApi() {
+        const form = document.getElementById("apiForm");
+
+        form.addEventListener('submit', (event) =>{
+            event.preventDefault();     // prevent form from submitting, causing the page to reload
+
+            apiKey = document.getElementById('inputApi').value;  // update the value of the key
+            useApi(lat, long); // call the API after a key is provided
+        });
+    }
+    
     // use the weather API and update HTML elements
     function useApi(lat, long) {
-        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&units=metric`;
+        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
 
             // `fetch` to make an HTTP GET request to the API endpoint
             // `then` called on the returned promise, resolves with the response from the API
@@ -116,9 +132,4 @@ function setBackground(weather) {
         document.body.style.backgroundImage = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
     }
 }
-
-
-
-
-
 
