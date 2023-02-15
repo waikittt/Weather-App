@@ -58,7 +58,7 @@ window.addEventListener('load', () => {
 
     // implement the Leaflet interactive map 
     function interactMap(latitude, longitude) {
-        // initialize, set its view to user's current geographical coordinates and a zoom level
+        // initialize map, set view to user's current geographical coordinates and zoom level
         var map = L.map('map').setView([latitude, longitude], 13);
 
         // add a OpenStreetMap tile layer
