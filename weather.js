@@ -1,7 +1,18 @@
 window.addEventListener('load', () => {
-    // play music
+    // lower the volume of music
     document.getElementById("myAudio").volume = 0.2; 
-    document.getElementById("myAudio").play(); 
+
+    // Leaflet interactive map
+    var map = L.map('map').setView([51.505, -0.09], 13);
+    
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+
+
 
     let long, lat;
     let tempDesc = document.querySelector('.temperature-description');
@@ -27,8 +38,9 @@ window.addEventListener('load', () => {
                 .then(response => {return response.json();}) //response parsed as JSON
                 .then(data => {
                     console.log(data)
-                    const temperature = data.main.temp;
-                    const description = data.weather[0]["description"];
+                    const 
+                        temperature = data.main.temp,
+                        description = data.weather[0]["description"];
 
                     // set DOM elements based on API
                     tempDegree.textContent = temperature;
@@ -39,12 +51,11 @@ window.addEventListener('load', () => {
                     // set the weather icon
                     const iconID = data.weather[0]["icon"]
                     icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${iconID}@2x.png"/>`   
-                    
+
                     // listen to the click event on the temperature element
                     tempSection.addEventListener('click', () => {
                         convertTemp(temperature);
                     });
-
                     // change background
                     setBackground(description);
                 });   

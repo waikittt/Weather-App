@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     height: 100vh;
     display: flex;
@@ -14,7 +13,6 @@ body {
     font-family: sans-serif;
     color: white;
 }
-
 .location, .temperature {
     height: 30vh;
     width: 50%;
@@ -24,18 +22,21 @@ body {
     align-items: center;
 }
 .location-area, .location-country{
-    border: 2px outset rgb(200, 252, 163);
+    border: 2px outset none;
     background-color: grey;
     padding: 15px;
 }
 #weather-icon {
-    border: 2px outset rgb(200, 252, 163);
-    background-color: rgb(93, 128, 122);
+    border: 2px outset none;
+    background-color: rgb(50, 101, 93);
 }
 .temperature {
     flex-direction: column;
+    margin-bottom: 2%;
 }
-
+.degree-section:hover, .temperature-description:hover{
+    background-color: rgb(51, 39, 39);
+}
 .degree-section {
     display: flex;
     align-items: center;
@@ -47,5 +48,13 @@ body {
 }
 .degree-section h2 {
     font-size: 40px;
+}
+#map {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    height: 250px;
+    width: 350px;
+    border: 2px dotted black;
 }
 
