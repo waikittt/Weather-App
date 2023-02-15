@@ -132,6 +132,9 @@ function setBackground(weather) {
     else if (weather.includes("rain") || weather.includes("drizzle")) {
         bgUrl = `url("https://c0.wallpaperflare.com/preview/765/195/605/grey-clouds.jpg")`;
     }
+    else if (weather.includes("snow")) {
+        bgUrl = `url("https://media.istockphoto.com/id/1066960598/photo/winter-holiday-background-with-snow-copy-space.jpg?s=612x612&w=0&k=20&c=KjOIp2ns1988noHZXBT8DbS3fOlhd_GXSHsoO7vtAeE=")`;
+    }
     document.body.style.backgroundImage = bgUrl;
 }
 
