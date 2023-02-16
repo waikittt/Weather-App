@@ -30,7 +30,7 @@ body {
 #weather-icon {
     border: 2px solid none;
     border-radius: 10%;
-    background-color: rgb(63, 110, 105);
+    background-color: rgb(167, 214, 209);
 }
 .temperature {
     flex-direction: column;
